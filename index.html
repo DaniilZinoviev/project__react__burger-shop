@@ -2,27 +2,29 @@
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="ru"> <!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="ru">
+<!--<![endif]-->
 
 <head>
 
-	<meta charset="utf-8">
-	<title>React burgers</title>
-	<meta name="description" content="Меню бургеров с возможностью компоновки каждого отдельного ингридиента">
+    <meta charset="utf-8">
+    <title>React burgers</title>
+    <meta name="description" content="Меню бургеров с возможностью компоновки каждого отдельного ингридиента">
 
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link rel="stylesheet" href="libs/normalize.min.css">
-	<link rel="stylesheet" href="libs/animate/animate.min.css">
-	
-	<link rel="stylesheet" href="css/fonts.css">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="libs/animate/animate.min.css">
 
-	<script src="libs/modernizr/modernizr.js"></script>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/media.css">
+
+    <script src="libs/modernizr/modernizr.js"></script>
 
 </head>
 
@@ -179,17 +181,141 @@
         
         <div class="hidden"></div>
     </section>
+    <!--
+    <section class="app__edit">
+        <div class="container">
 
-	<!--[if lt IE 9]>
+            <div class="section__head">
+                <h2>Редактировать бургер</h2>
+            </div>
+
+            <div class="section__body">
+
+                <div class="edit-wrap">
+                   
+                    <div class="edit flex">
+                        <div class="edit__item">
+                            <div class="edit__img">
+                                <img src="img/burgers/Big_Teysti.png" alt="">
+                            </div>
+                            <h3 class="edit__name">Биг тейсти</h3>
+                            <p class="edit__price">Сумма: <span class="edit__price-num">50</span> грн.</p>
+                        </div>
+                        <div class="edit__ingredients-wrap">
+                            <h3>Ингридиенты:</h3>
+                            <ul class="edit__ingredients-list">
+                                <li>Булочка x2</li>
+                                <li>Отбивная</li>
+                                <li>Лук</li>
+                                <li>Помидорки</li>
+                                <li>Ломтик сыра x2</li>
+                                <li>Котлета (говядина)</li>
+                            </ul>
+                            <button class="edit__btn-add btn">Добавить</button>
+                        </div>
+                    </div>
+                    
+                    <div class="edit-footer">
+                        <button class="btn edit__btn-confirm btn-confirm">Подтвердить</button>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div class="hidden"></div>
+
+        </div>
+    </section>
+    -->
+    <!--
+    <section class="app__order">
+
+        <div class="container">
+            <div class="section__head">
+                <h2>Итоговый заказ:</h2>
+            </div>
+
+            <div class="section__body">
+                <div class="order__products">
+
+                    <div class="order__product-wrap">
+                        <div class="order__product flex">
+                            <div class="order__img">
+                                <img src="img/burgers/Big_Teysti.png" alt="Big_Teysti.png">
+                            </div>
+                            <div class="order__descr flex">
+                                <div class="order__info flex">
+                                    <h3 class="order__title">Биг тейсти</h3>
+                                    <div class="order__btn-show btn">Дополнительно</div>
+                                </div>
+                                <div class="order__price-wrap">
+                                    <div class="order__price">50 грн.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order__product-wrap">
+                        <div class="order__product flex">
+                            <div class="order__img">
+                                <img src="img/burgers/Gamburger.png" alt="Big_Teysti.png">
+                            </div>
+                            <div class="order__descr flex">
+                                <div class="order__info flex">
+                                    <h3 class="order__title">Биг тейсти</h3>
+                                    <div class="order__btn-show btn">Дополнительно</div>
+                                </div>
+                                <div class="order__price-wrap">
+                                    <div class="order__price">50 грн.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order__product-wrap">
+                        <div class="order__product flex">
+                            <div class="order__img">
+                                <img src="img/burgers/Big_Teysti.png" alt="Big_Teysti.png">
+                            </div>
+                            <div class="order__descr flex">
+                                <div class="order__info flex">
+                                    <h3 class="order__title">Биг тейсти</h3>
+                                    <div class="order__btn-show btn">Дополнительно</div>
+                                </div>
+                                <div class="order__price-wrap">
+                                    <div class="order__price">50 грн.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="order__buttons">
+                   <button class="order__btn-add btn btn-add">Добавить в заказ</button>
+                    <button class="order__btn-confirm btn btn-confirm btn-disabled" title="Данная функция ещё на доработке">Подтвердить</button>
+                    <button class="order__btn-cancel btn btn-cancel">Отменить</button>
+                </div>
+                
+            </div>
+        </div>
+
+    </section>
+    -->
+
+
+    <!--[if lt IE 9]>
 	<script src="libs/html5shiv/es5-shim.min.js"></script>
 	<script src="libs/html5shiv/html5shiv.min.js"></script>
 	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
 	<script src="libs/respond/respond.min.js"></script>
 	<![endif]-->
 
-	
-	
-	<script src="js/common.js"></script>
-	
+
+
+    <script src="js/common.js"></script>
+
 </body>
+
 </html>

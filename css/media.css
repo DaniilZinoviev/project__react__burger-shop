@@ -58,13 +58,64 @@
         grid-template-columns: 1fr;
         grid-gap: 20px 0;
     }
-
+    
+    .edit__ingredients-wrap {
+    }
+    
+    .edit__img {
+        height: 180px;
+        width: 180px;
+    }
+    .edit__img img {
+        width: 90%;
+        top: 0;
+        left: 10px;
+    }
 }
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
     .app__menu .item {
         font-size: 14px;
+    }
+    
+    .app__edit .edit {
+        display: block;
+    }
+    
+    .edit__item,
+    .edit__ingredients-wrap {
+        padding: 10px 0;
+    }
+    
+    .edit__ingredients-wrap {
+        max-width: none;
+    }
+    
+    .edit__img {
+        margin: 0 auto;
+        height: 120px;
+    }
+    .edit__img img {
+        top: -40px;
+    }
+    
+    .edit__item {
+        text-align: center;
+    }
+    .edit__name {
+        padding: 0;
+    }
+    .edit__price {
+        padding: 0;
+    }
+    
+    .edit__ingredients-list {
+        padding-left: 15px;
+    }
+    
+    .edit__btn-add {
+        margin-top: 20px;
     }
 }
 

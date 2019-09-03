@@ -64,19 +64,67 @@ body {
 .section__head h2{
     text-align: center;
     font-size: 32px;
+    line-height: 1.2;
 }
 
+/* Buttons */
 .btn {
+    padding: 10px 15px;
     border: none;
     border-radius: 5px;
     background-color: #ffce00;
     color: #fff;
     cursor: pointer;
     font-size: 20px;
-    line-height: 0;
+    line-height: 1;
 }
 .btn:hover {
     background-color: #efc100;
+}
+.btn:active {
+    background-color: #ffd41e;
+}
+
+.btn-confirm {
+    background-color: #c4ff00;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.53);
+    color: #000;
+}
+.btn-confirm:hover {
+    background-color: #b2e800;
+}
+.btn-confirm:active {
+    background-color: #c8ff12;
+}
+
+.btn-cancel {
+    background-color: #ff3b00;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.53);
+    color: #000;
+}
+.btn-cancel:hover {
+    background-color: #ef3700;
+}
+.btn-cancel:active {
+    background-color: #ff460e;
+}
+
+.btn-disabled {
+    opacity: .6;
+    outline: none;
+    cursor: no-drop;
+}
+.btn-disabled:hover {
+    background-color: none;
+}
+.btn-disabled:active {
+    background-color: none;
+}
+
+ul {
+    margin-left: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
 /*  Main menu  */
@@ -113,4 +161,146 @@ body {
 .app__menu .item__footer {
     margin-top: auto;
     justify-content: space-between;
+}
+
+/*  Edit menu */
+
+.app__edit .edit-wrap {
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+.app__edit .edit {
+    justify-content: center;
+}
+
+.edit__item,
+.edit__ingredients-wrap {
+    padding: 10px 20px;
+}
+.edit__ingredients-wrap {
+    max-width: 45%;
+}
+.edit__img {
+    height: 250px;
+    width: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.edit__img img {
+    position: absolute;
+    top: -50px;
+    left: -20px;
+}
+
+.edit__btn-add {
+    padding: 6px 15px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.53);
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.edit__ingredients-list li {
+    font-size: 16px;
+    padding-left: 9px;
+    position: relative;
+}
+.edit__ingredients-list li::before {
+    content: '-';
+    position: absolute;
+    left: 0;
+}
+
+.edit__name {
+    font-size: 20px;
+    margin: 5px 0;
+    padding-left: 15px;
+}
+
+.edit__price {
+    margin: 0;
+    padding-left: 15px;
+    
+}
+.edit-footer {
+    margin-top: 50px;
+    text-align: center;
+}
+
+/*  Order section  */
+
+.app__order {
+    padding-bottom: 50px;
+}
+
+.order__product-wrap {
+    margin: 0 auto;
+    max-width: 80%;
+}
+.order__product {
+    height: 125px;
+    margin: 20px 0;
+    padding: 10px;
+    border: 3px dashed #ccc;
+    border-radius: 15px;
+}
+
+.order__img {
+    width: 200px;
+    padding-left: 20px;
+    margin-right: 20px;
+    overflow: hidden;
+}
+
+.order__img img {
+    height: 100%;
+    margin-top: -10px;
+    transform: scale(1.4);
+}
+
+.order__descr {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.order__price-wrap {
+    display: table;
+    height: 100%;
+}
+
+.order__price {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 30px;
+    font-size: 30px;
+}
+
+.order__info {
+    flex-direction: column;
+    padding: 10px;
+}
+
+.order__title {
+    font-size: 20px;
+    margin: 0;
+    font-weight: normal;
+}
+
+.order__btn-add {
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.47);
+    color: #000;
+}
+
+.order__btn-show {
+    margin-top: auto;
+    padding: 5px 10px;
+}
+
+.order__buttons {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.order__buttons > .btn {
+    margin: 0 10px;
 }
