@@ -1,3 +1,9 @@
+* {
+	box-sizing: border-box;
+	-webkit-transition: all .3s;
+	-o-transition: all .3s;
+	transition: all .3s;
+}
 *::-webkit-input-placeholder {
 	color: #666;
 	opacity: 1;
@@ -24,41 +30,84 @@ body textarea:required:valid {
 	
 }
 
-html.js .loader {
-	background: none repeat scroll 0 0 #ffffff;
-	bottom: 0;
-	height: 100%;
-	left: 0;
-	position: fixed;
-	right: 0;
-	top: 0;
-	width: 100%;
-	z-index: 9999;
-}
-html.js .loader_inner {
-	background-image: url("../img/preloader.gif");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-color: #fff;
-	height: 60px;
-	width: 60px;
-	margin-top: -30px;
-	margin-left: -30px;
-	left: 50%;
-	top: 50%;
-	position: absolute;
-}
-
 body {
 	font-family: sans-serif;
 	font-size: 16px;
 	min-width: 320px;
+    max-width: 1760px;
 	position: relative;
 	line-height: 1.6;
 	font-family: "RobotoRegular", sans-serif;
 	overflow-x: hidden;
 }
+
 .hidden {
 	display: none;
+}
+
+.container {
+    width: 1160px;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+}
+.flex {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+}
+
+.section__head h2{
+    text-align: center;
+    font-size: 32px;
+}
+
+.btn {
+    border: none;
+    border-radius: 5px;
+    background-color: #ffce00;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 0;
+}
+.btn:hover {
+    background-color: #efc100;
+}
+
+/*  Main menu  */
+
+.app__menu .items-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 50px 30px;
+}
+/*
+.app__menu .item {
+    cursor: pointer;
+}
+.app__menu .item:hover {
+    opacity: .5;
+}
+*/
+.app__menu .item__img {
+    background: linear-gradient(180deg, #fff , rgb(255, 206, 0, 0.25));
+    border-radius: 10px;
+    height: 125px;
+    margin-right: 10px;
+}
+.app__menu .item__img img {
+    max-height: 100%;
+}
+.app__menu .item__descr {
+    padding: 10px 0;
+    width: 100%;
+    flex-direction: column;
+}
+.app__menu .item__footer {
+    margin-top: auto;
+    justify-content: space-between;
 }

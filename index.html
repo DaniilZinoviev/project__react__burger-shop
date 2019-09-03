@@ -7,20 +7,16 @@
 <head>
 
 	<meta charset="utf-8">
+	<title>React burgers</title>
+	<meta name="description" content="Меню бургеров с возможностью компоновки каждого отдельного ингридиента">
 
-	<title>Заголовок</title>
-	<meta name="description" content="">
-
-	<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
-	<link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link rel="stylesheet" href="libs/bootstrap/css/bootstrap-grid.min.css">
-	<link rel="stylesheet" href="libs/animate/animate.css">
+    <link rel="stylesheet" href="libs/normalize.min.css">
+	<link rel="stylesheet" href="libs/animate/animate.min.css">
 	
 	<link rel="stylesheet" href="css/fonts.css">
 	<link rel="stylesheet" href="css/main.css">
@@ -32,13 +28,157 @@
 
 <body>
 
-	<!-- Здесь пишем код -->
-	
-	<div class="hidden"></div>
+    <section class="app__menu">
+        
+        <div class="container">
+           
+            <div class="section__head">
+                <h2>Меню</h2>
+            </div>
 
-	<div class="loader">
-		<div class="loader_inner"></div>
-	</div>
+            <div class="items-container grid">
+               
+                <div class="item-wrap">
+                    <div class="item flex">
+                        <div class="item__img">
+                            <img src="img/Burgers/Big_Teysti.png" alt="Big_Teysti.png">
+                        </div>
+                        <div class="item__descr flex">
+                            <div class="item__title">Биг Тейсти</div>
+                            <div class="item__footer flex">
+                                <div class="item__price">52 грн.</div>
+                                <button class="item__add btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="item-wrap">
+                    <div class="item flex">
+                        <div class="item__img">
+                            <img src="img/Burgers/Chikenburger_s_bekonom.png" alt="Chikenburger_s_bekonom.png">
+                        </div>
+                        <div class="item__descr flex">
+                            <div class="item__title">Чикенбургер с беконом</div>
+                            <div class="item__footer flex">
+                                <div class="item__price">45 грн.</div>
+                                <button class="item__add btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="item-wrap">
+                    <div class="item flex">
+                        <div class="item__img">
+                            <img src="img/Burgers/Chizburger.png" alt="Chizburger.png">
+                        </div>
+                        <div class="item__descr flex">
+                            <div class="item__title">Чизбургер</div>
+                            <div class="item__footer flex">
+                                <div class="item__price">36 грн.</div>
+                                <button class="item__add btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="item-wrap">
+                    <div class="item flex">
+                        <div class="item__img">
+                            <img src="img/Burgers/File_o_Fish.png" alt="File_o_Fish.png">
+                        </div>
+                        <div class="item__descr flex">
+                            <div class="item__title">Филе-о-фиш</div>
+                            <div class="item__footer flex">
+                                <div class="item__price">38 грн.</div>
+                                <button class="item__add btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="item-wrap">
+                    <div class="item flex">
+                        <div class="item__img">
+                            <img src="img/Burgers/Gamburger.png" alt="Gamburger.png">
+                        </div>
+                        <div class="item__descr flex">
+                            <div class="item__title">Гамбургер</div>
+                            <div class="item__footer flex">
+                                <div class="item__price">39 грн.</div>
+                                <button class="item__add btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="item-wrap">
+                    <div class="item flex">
+                        <div class="item__img">
+                            <img src="img/Burgers/Makchiken.png" alt="Makchiken.png">
+                        </div>
+                        <div class="item__descr flex">
+                            <div class="item__title">Макчикен</div>
+                            <div class="item__footer flex">
+                                <div class="item__price">42 грн.</div>
+                                <button class="item__add btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="item-wrap">
+                    <div class="item flex">
+                        <div class="item__img">
+                            <img src="img/Burgers/Royal_Bekon.png" alt="Royal_Bekon.png">
+                        </div>
+                        <div class="item__descr flex">
+                            <div class="item__title">Роял бекон</div>
+                            <div class="item__footer flex">
+                                <div class="item__price">55 грн.</div>
+                                <button class="item__add btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="item-wrap">
+                    <div class="item flex">
+                        <div class="item__img">
+                            <img src="img/Burgers/Royal_De_Lyuks.png" alt="Royal_De_Lyuks.png">
+                        </div>
+                        <div class="item__descr flex">
+                            <div class="item__title">Роял де люкс</div>
+                            <div class="item__footer flex">
+                                <div class="item__price">62 грн.</div>
+                                <button class="item__add btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="item-wrap">
+                    <div class="item flex">
+                        <div class="item__img">
+                            <img src="img/Burgers/Vestern_Gurme.png" alt="Vestern_Gurme.png">
+                        </div>
+                        <div class="item__descr flex">
+                            <div class="item__title">Вестерн гурме</div>
+                            <div class="item__footer flex">
+                                <div class="item__price">48 грн.</div>
+                                <button class="item__add btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <div class="hidden"></div>
+    </section>
 
 	<!--[if lt IE 9]>
 	<script src="libs/html5shiv/es5-shim.min.js"></script>
@@ -47,10 +187,7 @@
 	<script src="libs/respond/respond.min.js"></script>
 	<![endif]-->
 
-	<script src="libs/jquery/jquery-1.11.2.min.js"></script>
-	<script src="libs/waypoints/waypoints.min.js"></script>
-	<script src="libs/animate/animate-css.js"></script>
-	<script src="libs/plugins-scroll/plugins-scroll.js"></script>
+	
 	
 	<script src="js/common.js"></script>
 	

@@ -2,12 +2,27 @@
 
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
-
+    .container {
+        width: 960px;
+    }
+    
+    .app__menu .item {
+        font-size: 14px;
+    }
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
-
+    .container {
+        width: 700px;
+    }
+    
+    .app__menu .items-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    .app__menu .item {
+        font-size: 16px;
+    }
 }
 
 /* Small Devices, Tablets */
@@ -34,12 +49,23 @@
 		-ms-animation: none !important;
 		animation: none !important;
 	}
+    
+    .container {
+        width: 80%;
+    }
+    
+    .app__menu .items-container {
+        grid-template-columns: 1fr;
+        grid-gap: 20px 0;
+    }
 
 }
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
-
+    .app__menu .item {
+        font-size: 14px;
+    }
 }
 
 /* Custom, iPhone Retina */
