@@ -102,6 +102,9 @@ body {
 .app__menu .item__img img {
     max-height: 100%;
 }
+.app__menu .item__img:hover img{
+    transform: scale(1.3);
+}
 .app__menu .item__descr {
     padding: 10px 0;
     width: 100%;
