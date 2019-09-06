@@ -1,0 +1,67 @@
+{
+	"products": [  
+		{  
+		   "name": "Биг тейсти",
+		   "price": "52",
+		   "imgSrc": "./img/burgers/Big_Teysti.png",
+		   "productId": "001",
+		   "ingredients": ["Булочка", "Соус Биг-мак", "Отбивная", "Помидорки", "Сыр (голландский)", "Котлета (говядина)"]
+		},
+		{  
+		   "name": "Чикенбургер с беконом",
+		   "price": "45",
+		   "imgSrc": "./img/Burgers/Chikenburger_s_bekonom.png",
+		   "productId": "002",
+		   "ingredients": ["Булочка", "Соус Гуакамоле", "Сыр (козий)", "Салат", "Бекон", "Котлета (курица)"]
+		},
+		{  
+		   "name": "Чизбургер",
+		   "price": "36",
+		   "imgSrc": "./img/Burgers/Chizburger.png",
+		   "productId": "003",
+		   "ingredients": ["Булочка", "Помидорки", "Огурец (солёный)", "Сыр (голландский)", "Котлета (говядина)"]
+		},
+		{  
+		   "name": "Филе-о-фиш",
+		   "price": "38",
+		   "imgSrc": "./img/Burgers/File_o_Fish.png",
+		   "productId": "004",
+		   "ingredients": ["Булочка", "Сыр (с плесенью)", "Котлета (рыбная)", "Сыр (голландский)"]
+		},
+		{  
+		   "name": "Гамбургер",
+		   "price": "39",
+		   "imgSrc": "./img/Burgers/Gamburger.png",
+		   "productId": "005",
+		   "ingredients": ["Булочка", "Помидорки", "Огурец (солёный)", "Котлета (говядина)"]
+		},
+		{  
+		   "name": "Макчикен",
+		   "price": "42",
+		   "imgSrc": "./img/Burgers/Makchiken.png",
+		   "productId": "006",
+		   "ingredients": ["Булочка", "Сыр (козий)", "Салат", "Отбивная", "Котлета (курица)"]
+		},
+		{  
+		   "name": "Роял бекон",
+		   "price": "55",
+		   "imgSrc": "./img/Burgers/Royal_Bekon.png",
+		   "productId": "007",
+		   "ingredients": ["Булочка", "Помидорки", "Огурец (солёный)", "Сыр (голландский)", "Котлета (говядина)"]
+		},
+		{  
+		   "name": "Роял де люкс",
+		   "price": "62",
+		   "imgSrc": "./img/Burgers/Royal_De_Lyuks.png",
+		   "productId": "008",
+		   "ingredients": ["Булочка", "Соус Ранч", "Огурец (солёный)", "Салат", "Помидорки", "Сыр (голландский)", "Котлета (говядина)"]
+		},
+		{  
+		   "name": "Вестерн гурме",
+		   "price": "28",
+		   "imgSrc": "./img/Burgers/Vestern_Gurme.png",
+		   "productId": "009",
+		   "ingredients": ["Булочка", "Соус Торриси", "Огурец (солёный)", "Помидорки", "Котлета (говядина)"]
+		}
+	]
+}

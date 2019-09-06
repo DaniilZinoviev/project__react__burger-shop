@@ -58,10 +58,7 @@
         grid-template-columns: 1fr;
         grid-gap: 20px 0;
     }
-    
-    .edit__ingredients-wrap {
-    }
-    
+        
     .edit__img {
         height: 180px;
         width: 180px;
@@ -71,6 +68,7 @@
         top: 0;
         left: 10px;
     }
+
 }
 
 /* Extra Small Devices, Phones */
