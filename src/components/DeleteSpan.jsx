@@ -1,15 +1,15 @@
 import React from "react";
 
-function DeleteSpan(props) {
-    return (
-        <span 
-            className="edit__delete-ingredient" 
-            title="Убрать ингридиент"
-            onClick={() => props.removeIngredient(props.ingredient)}
-        >
-            &times;
-        </span>
-    )
-}
+const DeleteSpan = ({ removeIngredient, ingredient }) => {
+  return (
+    <span
+      className="edit__delete-ingredient"
+      title="Убрать ингридиент"
+      onClick={() => removeIngredient(ingredient)}
+    >
+      &times;
+    </span>
+  );
+};
 
-export default DeleteSpan ;
+export default DeleteSpan;

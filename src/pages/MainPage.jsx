@@ -1,28 +1,27 @@
 import React from "react";
 import MenuItems from "../components/MenuItems";
 
-function MainPage(props) {
-    // Should this page be shown or not
-    if (props.name !== "MainPage") {
-        return null;
-    }
-    
-    return (
-        <section className="app__menu">
-            <div className="container">
-                <div className="section__head">
-                    <h2>Меню</h2>
-                </div>
+const MainPage = (props) => {
+  // Should this page be shown or not
+  if (props.name !== "MainPage") {
+    return null;
+  }
 
-                <MenuItems 
-                    data={props.data} 
-                    changePage={props.changePage}
-                    addToOrder={props.addToOrder}
-                />
+  return (
+    <section className="app__menu">
+      <div className="container">
+        <div className="section__head">
+          <h2>Меню</h2>
+        </div>
 
-            </div>
-        </section>
-    )
-}
+        <MenuItems
+          data={props.data}
+          changePage={props.changePage}
+          addToOrder={props.addToOrder}
+        />
+      </div>
+    </section>
+  );
+};
 
-export default MainPage ;
+export default MainPage;

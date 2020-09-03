@@ -1,24 +1,21 @@
 import React from "react";
 import MenuItem from "../components/MenuItem";
 
-function MenuItems(props) {
-    
-    return (
-        <div className="items-container grid">
-
-            {props.data.map(function(item, i) {
-                return (
-                    <MenuItem 
-                        itemData={item} 
-                        key={i}
-                        changePage={props.changePage}
-                        addToOrder={props.addToOrder}
-                    />
-                )
-            })}
-
-        </div>
-    )
+function MenuItems({ data, addToOrder, changePage }) {
+  return (
+    <div className="items-container grid">
+      {data.map(function (item, i) {
+        return (
+          <MenuItem
+            itemData={item}
+            key={i}
+            changePage={changePage}
+            addToOrder={addToOrder}
+          />
+        );
+      })}
+    </div>
+  );
 }
 
-export default MenuItems ;
+export default MenuItems;
