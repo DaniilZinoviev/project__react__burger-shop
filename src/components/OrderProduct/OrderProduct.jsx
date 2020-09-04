@@ -1,6 +1,6 @@
 import React from "react";
 import Popup from "reactjs-popup";
-import IngredientsList from "./IngredientsList.jsx";
+import { IngredientList } from "../IngredientList";
 
 function OrderProduct({ data, removeFromOrder, index }) {
   return (
@@ -21,7 +21,7 @@ function OrderProduct({ data, removeFromOrder, index }) {
               position="right center"
             >
               <ul className="ingredients-list">
-                <IngredientsList ingredients={data.ingredients} />
+                <IngredientList ingredients={data.ingredients} />
               </ul>
             </Popup>
           </div>

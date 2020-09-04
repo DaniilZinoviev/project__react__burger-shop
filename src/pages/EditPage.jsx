@@ -1,5 +1,5 @@
 import React from "react";
-import EditSection from "../components/EditSection.jsx";
+import { EditSection } from "../components/EditSection";
 
 const EditPage = (props) => {
   // Should this page be shown or not

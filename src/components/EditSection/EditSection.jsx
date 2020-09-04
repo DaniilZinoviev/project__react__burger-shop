@@ -1,7 +1,7 @@
 import React from "react";
 import Popup from "reactjs-popup";
-import IngredientsList from "./IngredientsList.jsx";
-import Ingredient from "./Ingredient.jsx";
+import { IngredientList } from "../IngredientList";
+import { Ingredient } from "../Ingredient";
 
 const EditSection = ({
   changePage,
@@ -38,7 +38,7 @@ const EditSection = ({
           <h3>Ингридиенты:</h3>
 
           <ul className="ingredients-list">
-            <IngredientsList
+            <IngredientList
               ingredients={product.ingredients}
               removeIngredient={removeIngredient}
             />

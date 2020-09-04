@@ -1,5 +1,5 @@
 import React from "react";
-import OrderProducts from "../components/OrderProducts.jsx";
+import { OrderProductList } from "../components/OrderProductList";
 
 const OrderPage = (props) => {
   if (props.name !== "OrderPage") {
@@ -19,7 +19,7 @@ const OrderPage = (props) => {
         </div>
 
         <div className="section__body">
-          <OrderProducts
+          <OrderProductList
             productsOrder={props.productsOrder}
             changeOrderIndex={props.changeOrderIndex}
             removeFromOrder={props.removeFromOrder}

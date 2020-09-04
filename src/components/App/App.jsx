@@ -1,15 +1,13 @@
 import React from "react";
-import "./fonts.css";
-import "./main.css";
-import "./media.css";
-import MainPage from "./pages/MainPage.jsx";
-import EditPage from "./pages/EditPage.jsx";
-import OrderPage from "./pages/OrderPage.jsx";
+import { MainPage, EditPage, OrderPage } from "../../pages";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
+      error: null,
+
       currentPage: "OrderPage",
       products: [],
       productsOrder: [],
@@ -21,10 +19,16 @@ class App extends React.Component {
   // Request to json-server
   // My json-server: json-server --watch db.json --port 3001
   componentDidMount() {
-    let url = "http://localhost:3001/products";
+    this.setState({ isLoading: true, error: null });
+    const url = "http://localhost:3001/products";
     fetch(url)
-      .then((resp) => resp.json())
-      .then((data) => this.setState({ products: data }));
+      .then((response) => response.json())
+      .then((data) =>
+        this.setState({ products: data, isLoading: false, error: null })
+      )
+      .catch((error) =>
+        this.setState({ products: [], isLoading: false, error })
+      );
   }
 
   changePage = (page) => {
@@ -87,6 +91,8 @@ class App extends React.Component {
   };
 
   render() {
+    const { isLoading, error } = this.state;
+
     return (
       <React.Fragment>
         <MainPage

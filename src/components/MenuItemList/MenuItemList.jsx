@@ -1,7 +1,7 @@
 import React from "react";
-import MenuItem from "../components/MenuItem";
+import { MenuItem } from "../MenuItem";
 
-function MenuItems({ data, addToOrder, changePage }) {
+const MenuItemList = ({ data, addToOrder, changePage }) => {
   return (
     <div className="items-container grid">
       {data.map(function (item, i) {
@@ -16,6 +16,6 @@ function MenuItems({ data, addToOrder, changePage }) {
       })}
     </div>
   );
-}
+};
 
-export default MenuItems;
+export default MenuItemList;

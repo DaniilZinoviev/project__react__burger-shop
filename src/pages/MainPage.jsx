@@ -1,5 +1,5 @@
 import React from "react";
-import MenuItems from "../components/MenuItems";
+import { MenuItemList } from "../components/MenuItemList";
 
 const MainPage = (props) => {
   // Should this page be shown or not
@@ -14,7 +14,7 @@ const MainPage = (props) => {
           <h2>Меню</h2>
         </div>
 
-        <MenuItems
+        <MenuItemList
           data={props.data}
           changePage={props.changePage}
           addToOrder={props.addToOrder}
