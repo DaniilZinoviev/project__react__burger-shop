@@ -1,17 +1,15 @@
 import React from "react";
 import { MainPage, EditPage, OrderPage } from "../../pages";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false,
-      error: null,
-
       currentPage: "OrderPage",
-      products: [],
-      productsOrder: [],
-      orderIndex: -1,
+      // productsOrder: [],
+      // orderIndex: -1,
       isOpenEditModal: false,
     };
   }
@@ -19,68 +17,73 @@ class App extends React.Component {
   // Request to json-server
   // My json-server: json-server --watch db.json --port 3001
   componentDidMount() {
-    this.setState({ isLoading: true, error: null });
+    const {
+      fetchProductsRequest,
+      fetchProductsSuccess,
+      fetchProductsError,
+    } = this.props;
+
+    fetchProductsRequest();
+
     const url = "http://localhost:3001/products";
     fetch(url)
       .then((response) => response.json())
-      .then((data) =>
-        this.setState({ products: data, isLoading: false, error: null })
-      )
-      .catch((error) =>
-        this.setState({ products: [], isLoading: false, error })
-      );
+      .then((data) => fetchProductsSuccess(data))
+      .catch((error) => fetchProductsError(error));
   }
 
   changePage = (page) => {
     this.setState({ currentPage: page });
   };
 
-  changeOrderIndex = (index) => {
-    this.setState({ orderIndex: index });
-  };
+  // changeOrderIndex = (index) => {
+  //   this.setState({ orderIndex: index });
+  // };
 
-  _getProductsOrder = () => {
-    return this.state.productsOrder.slice();
-  };
+  // @todo
+  // _getProductsOrder = () => {
+  //   return this.state.productsOrder.slice();
+  // };
 
   _getOrderIndex = () => {
     return this.state.orderIndex;
   };
 
-  addIngredient = (name) => {
-    // Push ingredient name to current product of products order
-    let productsOrder = this._getProductsOrder();
-    productsOrder[this._getOrderIndex()].ingredients.push(name);
-    this.setState({ productsOrder: productsOrder });
-  };
+  // @todo
+  // addIngredient = (name) => {
+  //   // Push ingredient name to current product of products order
+  //   let productsOrder = this._getProductsOrder();
+  //   productsOrder[this._getOrderIndex()].ingredients.push(name);
+  //   this.setState({ productsOrder: productsOrder });
+  // };
 
-  removeIngredient = (name) => {
-    // Splice ingredient name from current product of products order
-    let productsOrder = this._getProductsOrder(),
-      orderIndex = this._getOrderIndex(),
-      ingredientIndex = productsOrder[orderIndex].ingredients.indexOf(name);
+  // removeIngredient = (name) => {
+  //   // Splice ingredient name from current product of products order
+  //   let productsOrder = this._getProductsOrder(),
+  //     orderIndex = this._getOrderIndex(),
+  //     ingredientIndex = productsOrder[orderIndex].ingredients.indexOf(name);
 
-    productsOrder[orderIndex].ingredients.splice(ingredientIndex, 1);
-    this.setState({ productsOrder: productsOrder });
-  };
+  //   productsOrder[orderIndex].ingredients.splice(ingredientIndex, 1);
+  //   this.setState({ productsOrder: productsOrder });
+  // };
 
-  addToOrder = (product) => {
-    // Push product to produts order
-    let productsOrder = this._getProductsOrder();
-    productsOrder.push(product);
-    this.changeOrderIndex(productsOrder.length - 1);
-    this.setState({ productsOrder: productsOrder });
-  };
+  // addToOrder = (product) => {
+  //   // Push product to produts order
+  //   let productsOrder = this._getProductsOrder();
+  //   productsOrder.push(product);
+  //   changeOrderIndex(productsOrder.length - 1);
+  //   this.setState({ productsOrder: productsOrder });
+  // };
 
-  removeFromOrder = (productIndex) => {
-    let productsOrder = this._getProductsOrder();
-    productsOrder.splice(productIndex, 1);
-    this.setState({ productsOrder: productsOrder });
-  };
+  // removeFromOrder = (productIndex) => {
+  //   let productsOrder = this._getProductsOrder();
+  //   productsOrder.splice(productIndex, 1);
+  //   this.setState({ productsOrder: productsOrder });
+  // };
 
-  cleanOrder = () => {
-    this.setState({ productsOrder: [] });
-  };
+  // cleanOrder = () => {
+  //   this.setState({ productsOrder: [] });
+  // };
 
   openModal = () => {
     this.setState({ isOpenEditModal: true });
@@ -91,39 +94,72 @@ class App extends React.Component {
   };
 
   render() {
-    const { isLoading, error } = this.state;
+    const {
+      currentPage,
+      // productsOrder,
+      // orderIndex,
+      isOpenEditModal,
+    } = this.state;
+
+    const {
+      products,
+      isLoading,
+      error,
+      productsOrder,
+      orderIndex,
+      removeFromOrder,
+      addIngredient,
+      removeIngredient,
+      changeOrderIndex,
+      addToOrder,
+      cleanOrder,
+    } = this.props;
+
+    console.log(`products, isLoading, error`, products, isLoading, error);
 
     return (
       <React.Fragment>
         <MainPage
-          name={this.state.currentPage}
-          data={this.state.products}
+          name={currentPage}
           changePage={this.changePage}
-          addToOrder={this.addToOrder}
+          data={products}
+          addToOrder={addToOrder}
         />
         <EditPage
-          name={this.state.currentPage}
-          productsOrder={this.state.productsOrder}
-          orderIndex={this.state.orderIndex}
-          removeFromOrder={this.removeFromOrder}
-          isOpenEditModal={this.state.isOpenEditModal}
-          addIngredient={this.addIngredient}
-          removeIngredient={this.removeIngredient}
+          name={currentPage}
+          changePage={this.changePage}
+          productsOrder={productsOrder}
+          orderIndex={orderIndex}
+          removeFromOrder={removeFromOrder}
+          isOpenEditModal={isOpenEditModal}
+          addIngredient={addIngredient}
+          removeIngredient={removeIngredient}
           openModal={this.openModal}
           closeModal={this.closeModal}
-          changePage={this.changePage}
         />
         <OrderPage
-          name={this.state.currentPage}
-          productsOrder={this.state.productsOrder}
-          changeOrderIndex={this.changeOrderIndex}
-          removeFromOrder={this.removeFromOrder}
+          name={currentPage}
           changePage={this.changePage}
-          cleanOrder={this.cleanOrder}
+          productsOrder={productsOrder}
+          changeOrderIndex={changeOrderIndex}
+          removeFromOrder={removeFromOrder}
+          cleanOrder={cleanOrder}
         />
       </React.Fragment>
     );
   }
 }
 
-export default App;
+// connect
+const mapStateToProps = (state) => {
+  const { products, order } = state;
+  return {
+    isLoading: products.isLoading,
+    error: products.error,
+    products: products.items,
+    productsOrder: order.order,
+    orderIndex: order.index,
+  };
+};
+
+export default connect(mapStateToProps, actions)(App);
