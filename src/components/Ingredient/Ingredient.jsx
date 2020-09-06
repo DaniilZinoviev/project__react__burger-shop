@@ -1,11 +1,7 @@
 import React from "react";
 import Popup from "reactjs-popup";
 
-const Ingredient = ({ closeModal, addIngredient, name, ingredients }) => {
-  const handleClick = (name) => {
-    closeModal();
-    addIngredient(name);
-  };
+const Ingredient = ({ handleClick, name, ingredients }) => {
   return (
     <Popup trigger={<li>{name}</li>} position="top center">
       <React.Fragment>

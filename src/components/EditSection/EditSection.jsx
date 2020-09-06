@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Popup from "reactjs-popup";
 import { IngredientList } from "../IngredientList";
 import { Ingredient } from "../Ingredient";
+import {
+  addIngredient,
+  removeFromOrder,
+  removeIngredient,
+} from "../../store/actions";
+import { connect } from "react-redux";
 
 const EditSection = ({
   changePage,
   removeFromOrder,
   orderIndex,
-  productsOrder,
+  order,
   removeIngredient,
-  openModal,
-  isOpenEditModal,
-  closeModal,
   addIngredient,
 }) => {
   const handleCancel = () => {
@@ -21,43 +24,52 @@ const EditSection = ({
   const handleConfirm = () => {
     changePage("OrderPage");
   };
+  const handleAddIngredient = (ingredient) => {
+    addIngredient(ingredient);
+    setIsOpenModal(false);
+  };
   // Get current product-object
-  let product = productsOrder[orderIndex];
+  const product = order[orderIndex];
+  const { imgSrc, name, price, ingredients } = product;
+
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   return (
     <div className="edit-wrap">
       <div className="edit flex">
         <div className="edit__item">
           <div className="edit__img">
-            <img src={product.imgSrc} alt={product.name} title={product.name} />
+            <img src={imgSrc} alt={name} title={name} />
           </div>
-          <h3 className="edit__name">{product.name}</h3>
-          <p className="edit__price">Сумма: {product.price} грн.</p>
+          <h3 className="edit__name">{name}</h3>
+          <p className="edit__price">Сумма: {price} грн.</p>
         </div>
         <div className="edit__ingredients-wrap">
           <h3>Ингридиенты:</h3>
 
           <ul className="ingredients-list">
             <IngredientList
-              ingredients={product.ingredients}
+              ingredients={ingredients}
               removeIngredient={removeIngredient}
             />
           </ul>
 
-          <button className="edit__btn-add btn" onClick={openModal}>
+          <button
+            className="edit__btn-add btn"
+            onClick={() => setIsOpenModal(true)}
+          >
             Добавить
           </button>
           <Popup
-            open={isOpenEditModal}
-            onClose={closeModal}
+            open={isOpenModal}
+            onClose={() => setIsOpenModal(false)}
             className="edit__modal"
             position="right center"
             modal={true}
           >
             <ul className="edit_available-ingredients">
               <Ingredient
-                addIngredient={addIngredient}
-                closeModal={closeModal}
+                handleClick={handleAddIngredient}
                 name="Сыры"
                 ingredients={[
                   "Сыр (голландский)",
@@ -66,8 +78,7 @@ const EditSection = ({
                 ]}
               />
               <Ingredient
-                addIngredient={addIngredient}
-                closeModal={closeModal}
+                handleClick={handleAddIngredient}
                 name="Котлеты"
                 ingredients={[
                   "Котлета (рыбная)",
@@ -76,14 +87,12 @@ const EditSection = ({
                 ]}
               />
               <Ingredient
-                addIngredient={addIngredient}
-                closeModal={closeModal}
+                handleClick={handleAddIngredient}
                 name="Овощи"
                 ingredients={["Огурец (солёный)", "Помидорки", "Салат"]}
               />
               <Ingredient
-                addIngredient={addIngredient}
-                closeModal={closeModal}
+                handleClick={handleAddIngredient}
                 name="Соусы"
                 ingredients={[
                   "Соус Ранч",
@@ -93,8 +102,7 @@ const EditSection = ({
                 ]}
               />
               <Ingredient
-                addIngredient={addIngredient}
-                closeModal={closeModal}
+                handleClick={handleAddIngredient}
                 name="Разное"
                 ingredients={["Булочка", "Бекон", "Отбивная", "Красный перец"]}
               />
@@ -121,4 +129,15 @@ const EditSection = ({
   );
 };
 
-export default EditSection;
+const mapStateToProps = ({ order: { order, index } }) => {
+  return {
+    order,
+    orderIndex: index,
+  };
+};
+
+export default connect(mapStateToProps, {
+  addIngredient,
+  removeFromOrder,
+  removeIngredient,
+})(EditSection);

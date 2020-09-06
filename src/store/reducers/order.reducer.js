@@ -5,13 +5,17 @@ const initialState = {
 
 const addIngredient = (order, index, name) => {
   let newOrder = [...order];
-  newOrder[index].ingredients.concat([name]);
+  newOrder[index].ingredients.push(name);
   return newOrder;
 };
 
 const removeIngredient = (order, index, name) => {
-  let newOrder = [...order];
-  newOrder[index].ingredients.filter((iName) => iName !== name);
+  let newOrder = order.map((item, i) => {
+    if (i === index) {
+      item.ingredients = item.ingredients.filter((iName) => iName !== name);
+    }
+    return item;
+  });
   return newOrder;
 };
 
@@ -28,6 +32,7 @@ const updateOrder = (state, action) => {
       return {
         ...state.order,
         order: [],
+        index: -1,
       };
 
     case "REMOVE_FROM_ORDER":

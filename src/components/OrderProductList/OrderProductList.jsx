@@ -1,18 +1,16 @@
 import React from "react";
 import { OrderProduct } from "../OrderProduct";
+import { connect } from "react-redux";
+import { removeFromOrder, changeOrderIndex } from "../../store/actions";
 
-const OrderProductList = ({
-  productsOrder,
-  changeOrderIndex,
-  removeFromOrder,
-}) => {
-  if (productsOrder.length === 0) {
+const OrderProductList = ({ order, changeOrderIndex, removeFromOrder }) => {
+  if (order.length === 0) {
     return <h2 className="order__empty-h2">Отсутствуют заказы</h2>;
   }
 
   return (
     <div className="order__products">
-      {productsOrder.map(function (product, i) {
+      {order.map(function (product, i) {
         return (
           <OrderProduct
             key={i}
@@ -27,4 +25,13 @@ const OrderProductList = ({
   );
 };
 
-export default OrderProductList;
+const mapStateToProps = ({ order: { order } }) => {
+  return {
+    order,
+  };
+};
+
+export default connect(mapStateToProps, {
+  removeFromOrder,
+  changeOrderIndex,
+})(OrderProductList);

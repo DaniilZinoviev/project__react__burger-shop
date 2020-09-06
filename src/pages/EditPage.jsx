@@ -1,9 +1,9 @@
 import React from "react";
 import { EditSection } from "../components/EditSection";
 
-const EditPage = (props) => {
+const EditPage = ({ name, changePage }) => {
   // Should this page be shown or not
-  if (props.name !== "EditPage") {
+  if (name !== "EditPage") {
     return null;
   }
 
@@ -15,17 +15,7 @@ const EditPage = (props) => {
         </div>
 
         <div className="section__body">
-          <EditSection
-            productsOrder={props.productsOrder}
-            orderIndex={props.orderIndex}
-            removeFromOrder={props.removeFromOrder}
-            isOpenEditModal={props.isOpenEditModal}
-            addIngredient={props.addIngredient}
-            removeIngredient={props.removeIngredient}
-            openModal={props.openModal}
-            closeModal={props.closeModal}
-            changePage={props.changePage}
-          />
+          <EditSection changePage={changePage} />
         </div>
 
         <div className="hidden"></div>

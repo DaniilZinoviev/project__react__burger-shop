@@ -1,14 +1,16 @@
 import React from "react";
 import { OrderProductList } from "../components/OrderProductList";
+import { connect } from "react-redux";
+import { cleanOrder } from "../store/actions";
 
-const OrderPage = (props) => {
-  if (props.name !== "OrderPage") {
+const OrderPage = ({ name, cleanOrder, changePage }) => {
+  if (name !== "OrderPage") {
     return null;
   }
 
   const handleCancel = () => {
-    props.cleanOrder();
-    props.changePage("MainPage");
+    cleanOrder();
+    changePage("MainPage");
   };
 
   return (
@@ -19,38 +21,37 @@ const OrderPage = (props) => {
         </div>
 
         <div className="section__body">
-          <OrderProductList
-            productsOrder={props.productsOrder}
-            changeOrderIndex={props.changeOrderIndex}
-            removeFromOrder={props.removeFromOrder}
+          <OrderProductList />
+
+          <OrderButtons
+            onAdd={() => changePage("MainPage")}
+            onCancel={() => handleCancel()}
           />
-
-          <div className="order__buttons">
-            <button
-              className="order__btn-add btn btn-add"
-              onClick={() => props.changePage("MainPage")}
-            >
-              Добавить в заказ
-            </button>
-
-            <button
-              className="order__btn-confirm btn btn-confirm btn-disabled"
-              title="Данная функция ещё на доработке"
-            >
-              Подтвердить
-            </button>
-
-            <button
-              className="order__btn-cancel btn btn-cancel"
-              onClick={handleCancel}
-            >
-              Отменить
-            </button>
-          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default OrderPage;
+const OrderButtons = ({ onCancel, onAdd }) => {
+  return (
+    <div className="order__buttons">
+      <button className="btn order__btn-add btn-add" onClick={onAdd}>
+        Добавить в заказ
+      </button>
+
+      <button
+        className="btn btn-confirm order__btn-confirm btn-disabled"
+        title="Данная функция ещё на доработке"
+      >
+        Подтвердить
+      </button>
+
+      <button className="btn btn-cancel order__btn-cancel" onClick={onCancel}>
+        Отменить
+      </button>
+    </div>
+  );
+};
+
+export default connect(null, { cleanOrder })(OrderPage);

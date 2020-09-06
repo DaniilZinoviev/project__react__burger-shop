@@ -1,9 +1,12 @@
 import React from "react";
-import { MenuItemList } from "../components/MenuItemList";
+import { MenuItem } from "../components/MenuItem";
+import { connect } from "react-redux";
+import { Spinner } from "../components/Spinner";
+import { ErrorBoundary } from "../components/ErrorBoundary";
 
-const MainPage = (props) => {
+const MainPage = ({ name, data, isLoading, error, changePage }) => {
   // Should this page be shown or not
-  if (props.name !== "MainPage") {
+  if (name !== "MainPage") {
     return null;
   }
 
@@ -14,14 +17,34 @@ const MainPage = (props) => {
           <h2>Меню</h2>
         </div>
 
-        <MenuItemList
-          data={props.data}
-          changePage={props.changePage}
-          addToOrder={props.addToOrder}
-        />
+        <MainMenu {...{ data, isLoading, error, changePage }} />
       </div>
     </section>
   );
 };
 
-export default MainPage;
+const MainMenu = ({ data, isLoading, error, changePage }) => {
+  if (error) {
+    return <ErrorBoundary error={error} />;
+  }
+  if (isLoading) {
+    return <Spinner />;
+  }
+  return (
+    <div className="items-container grid">
+      {data.map((item, i) => {
+        return <MenuItem itemData={item} key={i} changePage={changePage} />;
+      })}
+    </div>
+  );
+};
+
+const mapStateToProps = ({ products: { items, isLoading, error } }) => {
+  return {
+    data: items,
+    isLoading,
+    error,
+  };
+};
+
+export default connect(mapStateToProps)(MainPage);

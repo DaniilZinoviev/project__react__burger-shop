@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { addToOrder } from "../../store/actions";
 
 function MenuItem({ addToOrder, itemData, changePage }) {
   const handleClick = () => {
@@ -35,4 +37,4 @@ function MenuItem({ addToOrder, itemData, changePage }) {
   );
 }
 
-export default MenuItem;
+export default connect(null, { addToOrder })(MenuItem);
