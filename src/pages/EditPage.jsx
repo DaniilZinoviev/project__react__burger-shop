@@ -1,12 +1,7 @@
 import React from "react";
 import { EditSection } from "../components/EditSection";
 
-const EditPage = ({ name, changePage }) => {
-  // Should this page be shown or not
-  if (name !== "EditPage") {
-    return null;
-  }
-
+const EditPage = () => {
   return (
     <section className="app__edit">
       <div className="container">
@@ -15,7 +10,7 @@ const EditPage = ({ name, changePage }) => {
         </div>
 
         <div className="section__body">
-          <EditSection changePage={changePage} />
+          <EditSection />
         </div>
 
         <div className="hidden"></div>

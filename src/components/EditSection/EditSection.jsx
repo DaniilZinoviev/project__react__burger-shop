@@ -8,31 +8,39 @@ import {
   removeIngredient,
 } from "../../store/actions";
 import { connect } from "react-redux";
+import { compose } from "../../utils/compose";
+import { withRouter } from "react-router-dom";
 
 const EditSection = ({
-  changePage,
   removeFromOrder,
   orderIndex,
   order,
   removeIngredient,
   addIngredient,
+  history,
 }) => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  // Get current product-object
+  const product = order[orderIndex];
+  if (!product) {
+    history.push("/");
+    return null;
+  }
+
+  const { imgSrc, name, price, ingredients } = product;
+
   const handleCancel = () => {
-    changePage("MainPage");
+    history.push("/");
     removeFromOrder(orderIndex);
   };
   const handleConfirm = () => {
-    changePage("OrderPage");
+    history.push("/order");
   };
   const handleAddIngredient = (ingredient) => {
     addIngredient(ingredient);
     setIsOpenModal(false);
   };
-  // Get current product-object
-  const product = order[orderIndex];
-  const { imgSrc, name, price, ingredients } = product;
-
-  const [isOpenModal, setIsOpenModal] = useState(false);
 
   return (
     <div className="edit-wrap">
@@ -136,8 +144,11 @@ const mapStateToProps = ({ order: { order, index } }) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  addIngredient,
-  removeFromOrder,
-  removeIngredient,
-})(EditSection);
+export default compose(
+  connect(mapStateToProps, {
+    addIngredient,
+    removeFromOrder,
+    removeIngredient,
+  }),
+  withRouter
+)(EditSection);

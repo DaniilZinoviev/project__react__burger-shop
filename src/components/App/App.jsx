@@ -7,14 +7,9 @@ import {
   fetchProductsError,
 } from "../../store/actions";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentPage: "OrderPage",
-    };
-  }
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+class App extends React.Component {
   // Request to json-server
   // My json-server: json-server --watch db.json --port 3001
   componentDidMount() {
@@ -33,19 +28,16 @@ class App extends React.Component {
       .catch((error) => fetchProductsError(error));
   }
 
-  changePage = (page) => {
-    this.setState({ currentPage: page });
-  };
-
   render() {
-    const { currentPage } = this.state;
-
     return (
-      <React.Fragment>
-        <MainPage name={currentPage} changePage={this.changePage} />
-        <EditPage name={currentPage} changePage={this.changePage} />
-        <OrderPage name={currentPage} changePage={this.changePage} />
-      </React.Fragment>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={MainPage} />
+          <Route path="/edit" component={EditPage} />
+          <Route path="/order" component={OrderPage} />
+          <Route render={() => <h2>Page not found</h2>} />
+        </Switch>
+      </Router>
     );
   }
 }

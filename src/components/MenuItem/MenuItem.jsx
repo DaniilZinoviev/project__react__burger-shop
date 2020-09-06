@@ -1,11 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addToOrder } from "../../store/actions";
+import { compose } from "../../utils/compose";
+import { withRouter } from "react-router-dom";
 
-function MenuItem({ addToOrder, itemData, changePage }) {
+function MenuItem({ addToOrder, itemData, history }) {
   const handleClick = () => {
     addToOrder(itemData);
-    changePage("EditPage");
+    history.push("/edit");
   };
 
   return (
@@ -37,4 +39,9 @@ function MenuItem({ addToOrder, itemData, changePage }) {
   );
 }
 
-export default connect(null, { addToOrder })(MenuItem);
+export default compose(
+  connect(null, {
+    addToOrder,
+  }),
+  withRouter
+)(MenuItem);

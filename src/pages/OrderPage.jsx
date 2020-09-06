@@ -2,15 +2,13 @@ import React from "react";
 import { OrderProductList } from "../components/OrderProductList";
 import { connect } from "react-redux";
 import { cleanOrder } from "../store/actions";
+import { withRouter } from "react-router-dom";
+import { compose } from "../utils/compose";
 
-const OrderPage = ({ name, cleanOrder, changePage }) => {
-  if (name !== "OrderPage") {
-    return null;
-  }
-
+const OrderPage = ({ name, cleanOrder, history }) => {
   const handleCancel = () => {
     cleanOrder();
-    changePage("MainPage");
+    history.push("/");
   };
 
   return (
@@ -24,7 +22,7 @@ const OrderPage = ({ name, cleanOrder, changePage }) => {
           <OrderProductList />
 
           <OrderButtons
-            onAdd={() => changePage("MainPage")}
+            onAdd={() => history.push("/")}
             onCancel={() => handleCancel()}
           />
         </div>
@@ -54,4 +52,9 @@ const OrderButtons = ({ onCancel, onAdd }) => {
   );
 };
 
-export default connect(null, { cleanOrder })(OrderPage);
+export default compose(
+  connect(null, {
+    cleanOrder,
+  }),
+  withRouter
+)(OrderPage);
