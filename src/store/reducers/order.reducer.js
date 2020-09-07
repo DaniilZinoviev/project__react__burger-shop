@@ -38,7 +38,7 @@ const updateOrder = (state, action) => {
     case "REMOVE_FROM_ORDER":
       return {
         ...state.order,
-        order: [...order.slice(0, index), ...order.slice(index)],
+        order: [...order.slice(0, index), ...order.slice(index + 1)],
         index: index - 1,
       };
 
