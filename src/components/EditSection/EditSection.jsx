@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import Popup from "reactjs-popup";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
 import { IngredientList } from "../IngredientList";
 import { Ingredient } from "../Ingredient";
 import {
@@ -7,9 +11,7 @@ import {
   removeFromOrder,
   removeIngredient,
 } from "../../store/actions";
-import { connect } from "react-redux";
 import { compose } from "../../utils/compose";
-import { withRouter } from "react-router-dom";
 
 const EditSection = ({
   removeFromOrder,
@@ -135,6 +137,17 @@ const EditSection = ({
       </div>
     </div>
   );
+};
+
+EditSection.propTypes = {
+  removeFromOrder: PropTypes.func.isRequired,
+  removeIngredient: PropTypes.func.isRequired,
+  addIngredient: PropTypes.func.isRequired,
+  orderIndex: PropTypes.number.isRequired,
+  order: PropTypes.array.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };
 
 const mapStateToProps = ({ order: { order, index } }) => {

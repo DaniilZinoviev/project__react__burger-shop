@@ -1,5 +1,6 @@
 import React from "react";
 import Popup from "reactjs-popup";
+import PropTypes from "prop-types";
 
 const Ingredient = ({ handleClick, name, ingredients }) => {
   return (
@@ -15,6 +16,12 @@ const Ingredient = ({ handleClick, name, ingredients }) => {
       </React.Fragment>
     </Popup>
   );
+};
+
+Ingredient.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Ingredient;

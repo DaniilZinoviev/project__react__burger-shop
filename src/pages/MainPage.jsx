@@ -3,6 +3,7 @@ import { MenuItem } from "../components/MenuItem";
 import { connect } from "react-redux";
 import { Spinner } from "../components/Spinner";
 import { ErrorBoundary } from "../components/ErrorBoundary";
+import PropTypes from "prop-types";
 
 const MainPage = ({ data, isLoading, error }) => {
   return (
@@ -16,6 +17,12 @@ const MainPage = ({ data, isLoading, error }) => {
       </div>
     </section>
   );
+};
+
+MainPage.propTypes = {
+  isLoading: PropTypes.bool,
+  error: PropTypes.func,
+  data: PropTypes.array,
 };
 
 const MainMenu = ({ data, isLoading, error }) => {

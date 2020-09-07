@@ -1,6 +1,8 @@
 import React from "react";
-import { OrderProduct } from "../OrderProduct";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
+import { OrderProduct } from "../OrderProduct";
 import { removeFromOrder, changeOrderIndex } from "../../store/actions";
 
 const OrderProductList = ({ order, changeOrderIndex, removeFromOrder }) => {
@@ -23,6 +25,12 @@ const OrderProductList = ({ order, changeOrderIndex, removeFromOrder }) => {
       })}
     </div>
   );
+};
+
+OrderProductList.propTypes = {
+  removeFromOrder: PropTypes.func.isRequired,
+  changeOrderIndex: PropTypes.func.isRequired,
+  order: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = ({ order: { order } }) => {

@@ -1,6 +1,7 @@
 import React from "react";
 import Popup from "reactjs-popup";
 import { IngredientList } from "../IngredientList";
+import PropTypes from "prop-types";
 
 function OrderProduct({ data, removeFromOrder, index }) {
   const { imgSrc, name, price, ingredients } = data;
@@ -43,5 +44,16 @@ function OrderProduct({ data, removeFromOrder, index }) {
     </div>
   );
 }
+
+OrderProduct.propTypes = {
+  removeFromOrder: PropTypes.func.isRequired,
+  data: PropTypes.shape({
+    imgSrc: PropTypes.string,
+    name: PropTypes.string,
+    price: PropTypes.string,
+    ingredients: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+};
 
 export default OrderProduct;

@@ -1,11 +1,13 @@
 import React from "react";
-import { OrderProductList } from "../components/OrderProductList";
 import { connect } from "react-redux";
-import { cleanOrder } from "../store/actions";
 import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+
+import { OrderProductList } from "../components/OrderProductList";
+import { cleanOrder } from "../store/actions";
 import { compose } from "../utils/compose";
 
-const OrderPage = ({ name, cleanOrder, history }) => {
+const OrderPage = ({ cleanOrder, history }) => {
   const handleCancel = () => {
     cleanOrder();
     history.push("/");
@@ -50,6 +52,18 @@ const OrderButtons = ({ onCancel, onAdd }) => {
       </button>
     </div>
   );
+};
+
+OrderPage.propTypes = {
+  cleanOrder: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
+
+OrderButtons.propTypes = {
+  onCancel: PropTypes.func.isRequired,
+  onAdd: PropTypes.func.isRequired,
 };
 
 export default compose(

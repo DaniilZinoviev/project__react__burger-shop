@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const IngredientList = ({ removeIngredient, ingredients }) => {
   const removeButton = (ingredient) => (
@@ -13,7 +14,7 @@ const IngredientList = ({ removeIngredient, ingredients }) => {
 
   return (
     <React.Fragment>
-      {ingredients.map(function (ingredient, i) {
+      {ingredients.map((ingredient, i) => {
         return (
           <li key={i}>
             <span>{ingredient}</span>
@@ -23,6 +24,11 @@ const IngredientList = ({ removeIngredient, ingredients }) => {
       })}
     </React.Fragment>
   );
+};
+
+IngredientList.propTypes = {
+  removeIngredient: PropTypes.func,
+  ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default IngredientList;
