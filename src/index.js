@@ -8,10 +8,16 @@ import "./media.css";
 
 import store from "./store/store";
 import { App } from "./components/App";
+import { ApiServiceContext } from "./contexts";
+import { ApiService } from "./services";
+
+const apiService = new ApiService();
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ApiServiceContext.Provider value={apiService}>
+      <App />
+    </ApiServiceContext.Provider>
   </Provider>,
   document.getElementById("root")
 );

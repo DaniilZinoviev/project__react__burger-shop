@@ -1,49 +1,54 @@
-import React from "react";
-import { MainPage, EditPage, OrderPage } from "../../pages";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { compose } from "../../utils/compose";
+
+import { MainPage, EditPage, OrderPage } from "../../pages";
+import { withApiService } from "../../hocs";
 import {
   fetchProductsRequest,
   fetchProductsSuccess,
   fetchProductsError,
 } from "../../store/actions";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-class App extends React.Component {
-  // Request to json-server
-  // My json-server: json-server --watch db.json --port 3001
-  componentDidMount() {
-    const {
-      fetchProductsRequest,
-      fetchProductsSuccess,
-      fetchProductsError,
-    } = this.props;
-
-    fetchProductsRequest();
-
-    const url = "http://localhost:3001/products";
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => fetchProductsSuccess(data))
-      .catch((error) => fetchProductsError(error));
-  }
-
-  render() {
-    return (
-      <Router>
-        <Switch>
-          <Route path="/" exact component={MainPage} />
-          <Route path="/edit" component={EditPage} />
-          <Route path="/order" component={OrderPage} />
-          <Route render={() => <h2>Page not found</h2>} />
-        </Switch>
-      </Router>
-    );
-  }
-}
-
-export default connect(null, {
+const App = ({
   fetchProductsRequest,
   fetchProductsSuccess,
   fetchProductsError,
-})(App);
+  apiService,
+}) => {
+  // Request to json-server
+  // My json-server: json-server --watch db.json --port 3001
+  useEffect(() => {
+    fetchProductsRequest();
+    apiService
+      .getProducts()
+      .then((data) => fetchProductsSuccess(data))
+      .catch((error) => fetchProductsError(error));
+  }, [
+    fetchProductsRequest,
+    fetchProductsSuccess,
+    fetchProductsError,
+    apiService,
+  ]);
+
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" exact component={MainPage} />
+        <Route path="/edit" component={EditPage} />
+        <Route path="/order" component={OrderPage} />
+        <Route render={() => <h2>Page not found</h2>} />
+      </Switch>
+    </Router>
+  );
+};
+
+export default compose(
+  connect(null, {
+    fetchProductsRequest,
+    fetchProductsSuccess,
+    fetchProductsError,
+  }),
+  withApiService
+)(App);
